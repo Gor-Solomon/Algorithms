@@ -12,16 +12,10 @@ namespace ConsoleAppTest
         {
             int[] arr = new int[s];
             Random random = new Random();
-            HashSet<int> vs = new HashSet<int>();
 
             for (int i = 0; i < arr.Length; i++)
             {
-                var x = random.Next();
-                //while (!vs.Add(x))
-                //{
-                //    x = random.Next();
-                //}
-                arr[i] = x;
+                arr[i] = random.Next();
             }
 
             return arr;
@@ -38,30 +32,14 @@ namespace ConsoleAppTest
                     int ir = right;
                     int pivot = arr[left];
 
-                    while (il < ir)
+                    for (; il < ir; il++)
                     {
-                        while (arr[il] < pivot)
+                        if (arr[il] > pivot && arr[il] != arr[ir])
                         {
-                            il++;
-                        }
-
-                        while (arr[ir] > pivot)
-                        {
+                            var temp = arr[ir];
+                            arr[ir] = arr[il];
+                            arr[il] = temp;
                             ir--;
-                        }
-
-                        if (il < ir)
-                        {
-                            if (arr[left] == arr[right])
-                                break;
-
-                            int temp = arr[il];
-                            arr[il] = arr[ir];
-                            arr[ir] = temp;
-                        }
-                        else
-                        {
-                            break;
                         }
                     }
 
@@ -77,7 +55,7 @@ namespace ConsoleAppTest
                 }
             }
 
-            Quick_Sort(array, 0, array.Length - 1);
+            quickSort(array, 0, array.Length - 1);
         }
 
         internal void CheckArraySorted(int[] arr)
@@ -96,7 +74,9 @@ namespace ConsoleAppTest
 
         public  void Quick_Sort(int[] array, int left, int right)
         {
-             void QuickSort(int[] arr, int start, int end)
+            //  http://csharpexamples.com/c-quick-sort-algorithm-implementation/
+
+            void QuickSort(int[] arr, int start, int end)
             {
                 int i;
                 if (start < end)
