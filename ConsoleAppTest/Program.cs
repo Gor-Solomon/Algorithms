@@ -535,11 +535,20 @@ class Solution
     static void quickSortBootLoader()
     {
         DivideAndConquer divideAndConquer = new DivideAndConquer();
-        int[] arr = /*new int[] { 7,1,8,6,4,9,6};*/ divideAndConquer.GetRandomArray(500, 0, 2000000000); 
+        int[] arr = divideAndConquer.GetRandomArray(4096, 0, 2000000000);
+        int[] arr2 = new int[arr.Length]; arr.CopyTo(arr2, 0);
+        var watch = System.Diagnostics.Stopwatch.StartNew();
         divideAndConquer.QuickSort(arr);
+        watch.Stop();
 
-        Console.WriteLine(string.Join(", " , arr));
+        Console.WriteLine("Current Implementation Time : " + watch.ElapsedTicks);
         divideAndConquer.CheckArraySorted(arr);
+
+         watch = System.Diagnostics.Stopwatch.StartNew();
+        Array.Sort(arr2);
+        watch.Stop();
+
+        Console.WriteLine("C# time: " + watch.ElapsedTicks);
     }
 
     static void classicSortBootLoader()
