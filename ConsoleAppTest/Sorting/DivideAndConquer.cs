@@ -22,47 +22,68 @@ namespace ConsoleAppTest
         {
             void quickSort(int[] arr, int left, int right)
             {
-                if (left < right)
-                {
-
                     int il = left;
                     int ir = right;
-                    int pivot = arr[(left + right) / 2];
 
-                    while (true)
+                    if (ir - il < 9)
                     {
-                        while (arr[il] < pivot) il++;
-
-                        while (arr[ir] > pivot) ir--;
-
-                        if (il >= ir)
+                        for (var i = il; i < ir; i++)
                         {
-                            break;
+
+                            int iMin = i;
+
+                            for (int j = iMin + 1; j <= ir; j++)
+                            {
+                                if (arr[j] < arr[iMin])
+                                {
+                                    iMin = j;
+                                }
+                            }
+
+                            if (iMin != i)
+                            {
+                                var temp = arr[iMin];
+                                arr[iMin] = arr[i];
+                                arr[i] = temp;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        int pivot = arr[(left + right) / 2];
+
+                        while (true)
+                        {
+                            while (arr[il] < pivot) il++;
+
+                            while (arr[ir] > pivot) ir--;
+
+                            if (il >= ir)
+                            {
+                                break;
+                            }
+
+                            var temp = arr[ir];
+                            arr[ir] = arr[il];
+                            arr[il] = temp;
+
+                            il++;
+                            ir--;
                         }
 
-                        var temp = arr[ir];
-                        arr[ir] = arr[il];
-                        arr[il] = temp;
+                        if (left < ir)
+                        {
+                            quickSort(arr, left, ir);
+                        }
 
-                        il++;
-                        ir--;
+                        if (ir + 1 < right)
+                        {
+                            quickSort(arr, ir + 1, right);
+                        }
                     }
-
-                    if (left < ir)
-                    {
-                        quickSort(arr, left, ir);
-                    }
-
-                    if (ir + 1 < right)
-                    {
-                        quickSort(arr, ir + 1, right);
-                    }
-                }
             }
 
             quickSort(array, 0, array.Length - 1);
-
- 
         }
 
         public void InsertionSort(int[] array)
