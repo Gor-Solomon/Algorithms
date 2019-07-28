@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryTrees\BinaryTree.cs" />
     <Compile Include="Sorting\DivideAndConquer.cs" />
     <Compile Include="HuffmanCode.cs" />
     <Compile Include="Program.cs" />

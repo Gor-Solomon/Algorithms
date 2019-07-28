@@ -1,4 +1,5 @@
 ﻿using ConsoleAppTest;
+using ConsoleAppTest.BinaryTrees;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +12,7 @@ class Solution
     {
         static void Main(String[] args)
         {
-            quickSortBootLoader();
+            BinaryTreeBootLoader();
             //int[] arr = new int[] { 5, 1, 6, 2, 7, 3, 4 };
             //test(arr);
             //Console.WriteLine(string.Join(", " , arr));
@@ -21,7 +22,7 @@ class Solution
         static void test(int[] arr)
         {
             int il = 0;
-            int ir = arr.Length -1;
+            int ir = arr.Length - 1;
 
             for (var i = 0; i <= (il + ir) / 2; i++)
             {
@@ -52,6 +53,29 @@ class Solution
             }
         }
 
+        public static void BinaryTreeBootLoader()
+        {
+            Node<Char> node = new Node<char>()
+            {
+                Value = 'a',
+
+                Left = new Node<char>()
+                {
+                  Value = 'b',
+                  Left = new Node<char>() { Value = 'd', Left = new Node<char>() { Value = 'h' },
+                  Right = new Node<char>() { Value = 'i' } }, Right = new Node<char>() { Value = 'e' } },
+
+                Right = new Node<char>() 
+                {
+                    Value = 'c',
+                    Left = new Node<char>() { Value = 'f', Left = new Node<char>() { Value = 'j' }, Right = new Node<char>() { Value = 'k' } },
+                    Right = new Node<char>() { Value = 'g', Left = new Node<char>() { Value = 'l' } }
+                }
+            };
+
+            BinaryTree<char> binaryTree = new BinaryTree<char>(node);
+            binaryTree.LevelOrderTraversal();
+        }
         static void quickSortBootLoader()
         {
             DivideAndConquer divideAndConquer = new DivideAndConquer();
