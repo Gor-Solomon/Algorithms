@@ -69,12 +69,12 @@ class Solution
                 {
                     Value = 'c',
                     Left = new Node<char>() { Value = 'f', Left = new Node<char>() { Value = 'j' }, Right = new Node<char>() { Value = 'k' } },
-                    Right = new Node<char>() { Value = 'g', Left = new Node<char>() { Value = 'l' } }
+                    Right = new Node<char>() { Value = 'g', Left = new Node<char>() { Value = 'l' }, Right = new Node<char>() { Value = 'm' } }
                 }
             };
 
             BinaryTree<char> binaryTree = new BinaryTree<char>(node);
-            binaryTree.LevelOrderTraversal();
+            binaryTree.VerticalOrderTraversal();
         }
         static void quickSortBootLoader()
         {
